@@ -1,0 +1,27 @@
+﻿<!-- Made By Josue Lopez Lozano 991605014-->
+<!-- April 3rd, 2024 -->
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="text-danger">@ViewBag.ErrorMessage</div>
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Login" method="post">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+<p>Don't have an account? <a asp-action="Index">Sign up here</a>.</p>

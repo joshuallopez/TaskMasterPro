@@ -1,0 +1,39 @@
+﻿<!-- Made By Josue Lopez Lozano 991605014-->
+<!-- April 3rd, 2024 -->
+
+@model IEnumerable<TaskMasterPro.Models.Task>
+
+<h2>Tasks</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New Task</a> 
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Due Date</th>
+            <th>Is Complete</th>
+            <th>Project</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.DueDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsComplete)</td>
+                <td>@Html.DisplayFor(modelItem => item.Project.Name)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TaskId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.TaskId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TaskId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

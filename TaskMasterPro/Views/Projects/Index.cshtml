@@ -1,0 +1,38 @@
+﻿<!-- Made By Josue Lopez Lozano 991605014-->
+<!-- April 3rd, 2024 -->
+
+@model IEnumerable<TaskMasterPro.Models.Project>
+
+<h2>Projects</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Project</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ProjectId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ProjectId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ProjectId">Delete</a>
+                </td>
+            </tr>
+            @if (!Model.Any())
+            {
+                <p>You have no projects yet. <a asp-action="Create">Create a new project</a>.</p>
+            }
+
+        }
+    </tbody>
+</table>
